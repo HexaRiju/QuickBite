@@ -1,0 +1,95 @@
+name,category,price,stock
+Maggi Classic,Food,20,50
+Maggi Masala,Food,25,40
+Maggi Chicken,Food,30,35
+Yippee Noodles,Food,22,45
+Top Ramen,Food,24,30
+Cup Noodles,Food,35,25
+Coke 250ml,Drink,20,60
+Coke 500ml,Drink,40,30
+Pepsi 250ml,Drink,20,55
+Pepsi 750ml,Drink,45,25
+Sprite 500ml,Drink,40,20
+Fanta 500ml,Drink,40,20
+Thumbs Up 500ml,Drink,40,25
+Mountain Dew,Drink,45,30
+Red Bull,Drink,110,15
+Lays Classic,Snack,20,60
+Lays Cream Onion,Snack,20,55
+Lays Magic Masala,Snack,20,65
+Kurkure Masala,Snack,15,70
+Kurkure Green Chutney,Snack,15,60
+Uncle Chips,Snack,20,50
+Bingo Mad Angles,Snack,20,45
+Oreo,Biscuits,30,50
+Good Day Butter,Biscuits,25,45
+Marie Gold,Biscuits,20,60
+Hide & Seek,Biscuits,35,40
+Tiger Biscuit,Biscuits,15,55
+Bourbon,Biscuits,30,45
+Dairy Milk,Chocolate,50,35
+KitKat,Chocolate,20,80
+5 Star,Chocolate,20,75
+Perk,Chocolate,10,90
+Snickers,Chocolate,40,30
+Munch,Chocolate,15,70
+Amul Milk,Drink,30,40
+Flavoured Milk,Drink,35,35
+Cold Coffee,Drink,60,25
+Instant Coffee,Drink,80,20
+Tea Bags,Drink,50,30
+Bread,Food,40,30
+Butter,Food,55,25
+Jam,Food,60,20
+Peanut Butter,Food,120,15
+Cup Soup,Food,25,50
+Cornflakes,Food,90,20
+Chocos,Food,120,15
+Energy Bar,Snack,50,30
+Protein Bar,Snack,80,20
+Nachos,Snack,60,25
+Popcorn,Snack,30,50
+Salted Peanuts,Snack,20,60
+Roasted Chana,Snack,15,70
+Trail Mix,Snack,90,20
+Dry Fruits Mix,Snack,150,15
+Cashews,Snack,200,10
+Almonds,Snack,180,12
+Raisins,Snack,120,18
+Banana Chips,Snack,50,30
+Samosa Pack,Food,40,25
+Veg Puff,Food,30,30
+Egg Puff,Food,35,20
+Instant Pasta,Food,40,35
+Cheese Slice,Food,80,15
+Paneer Pack,Food,100,10
+Ice Cream Cup,Food,50,20
+Ice Cream Cone,Food,40,25
+Frozen Pizza,Food,150,10
+Frozen Fries,Food,120,15
+Cupcake,Food,30,30
+Chocolate Cake Slice,Food,60,20
+Donut,Food,50,25
+Brownie,Food,70,20
+Energy Drink Can,Drink,120,15
+Fruit Juice Pack,Drink,30,50
+Apple Juice,Drink,40,30
+Orange Juice,Drink,40,30
+Mango Juice,Drink,35,35
+Water Bottle 1L,Drink,20,80
+Water Bottle 2L,Drink,30,60
+Electrolyte Drink,Drink,50,25
+Milkshake,Drink,60,20
+Lassi,Drink,40,30
+Buttermilk,Drink,25,35
+Instant Oats,Food,40,30
+Masala Oats,Food,45,25
+Cup Rice,Food,60,20
+Ready Dal,Food,80,15
+Ready Paneer,Food,120,10
+Chips Combo Pack,Snack,50,25
+Biscuit Combo Pack,Snack,60,20
+Chocolate Combo,Snack,100,15
+Snack Box,Snack,150,10
+Late Night Combo,Food,120,20
+Exam Combo Pack,Food,150,15
