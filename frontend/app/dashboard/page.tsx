@@ -2,7 +2,6 @@
 
 import { useState, useMemo, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { Header } from "@/components/header"
 import { CategoryFilter, type Category } from "@/components/category-filter"
 import { ProductCard, type Product } from "@/components/product-card"
 import { Input } from "@/components/ui/input"
@@ -28,7 +27,9 @@ export default function DashboardPage() {
     const fetchProducts = async () => {
       try {
         setLoading(true)
-        const response = await fetch("http://localhost:8080/api/products")
+        const response = await fetch(
+          process.env.NEXT_PUBLIC_API_URL + "/api/products"
+        )
 
         if (!response.ok) {
           throw new Error("Failed to fetch products")
@@ -66,7 +67,6 @@ export default function DashboardPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-background">
-        <Header />
         <main className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-center py-20">
             <div className="text-center">
@@ -83,7 +83,6 @@ export default function DashboardPage() {
   if (error) {
     return (
       <div className="min-h-screen bg-background">
-        <Header />
         <main className="container mx-auto px-4 py-6">
           <div className="flex flex-col items-center justify-center py-20 text-center">
             <div className="mb-4 rounded-full bg-destructive/10 p-6">
@@ -102,8 +101,6 @@ export default function DashboardPage() {
   //  MAIN UI
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-
       <main className="container mx-auto px-4 py-6">
         {/* Search + Filter */}
         <div className="mb-6 space-y-4">

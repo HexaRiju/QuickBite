@@ -8,21 +8,29 @@ import { UtensilsCrossed, LogOut, User } from "lucide-react"
 
 export function Header() {
   const router = useRouter()
+
   const [cartCount, setCartCount] = useState(0)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  const handleLogout = () => {
-    localStorage.removeItem("rollNo")
-    router.push("/")
-  }
+  // 🔥 CHECK LOGIN
+  useEffect(() => {
+    const roll = localStorage.getItem("rollNo")
+    setIsLoggedIn(!!roll)
+  }, [])
 
+  // 🔥 CART COUNT
   useEffect(() => {
     const updateCartCount = () => {
-      const cart = JSON.parse(localStorage.getItem("cart") || "[]")
-      const total = cart.reduce(
-        (sum: number, item: any) => sum + item.quantity,
-        0
-      )
-      setCartCount(total)
+      try {
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]")
+        const total = cart.reduce(
+          (sum: number, item: any) => sum + item.quantity,
+          0
+        )
+        setCartCount(total)
+      } catch {
+        setCartCount(0)
+      }
     }
 
     updateCartCount()
@@ -35,6 +43,14 @@ export function Header() {
       window.removeEventListener("storage", updateCartCount)
     }
   }, [])
+
+  const handleLogout = () => {
+    localStorage.removeItem("rollNo")
+    router.push("/")
+  }
+
+  // 🚨 THIS LINE FIXES YOUR ISSUE
+  if (!isLoggedIn) return null
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-card shadow-sm">
@@ -50,8 +66,7 @@ export function Header() {
 
         {/* RIGHT */}
         <div className="flex items-center gap-5">
-          
-          {/*  CART */}
+
           <Link href="/cart" className="relative text-xl">
             🛒
             {cartCount > 0 && (
@@ -61,18 +76,15 @@ export function Header() {
             )}
           </Link>
 
-          {/*  ORDERS */}
           <Link href="/orders" className="text-sm font-medium">
             📦 Orders
           </Link>
 
-          {/* USER */}
           <div className="hidden sm:flex items-center gap-2 text-sm text-muted-foreground">
             <User className="h-4 w-4" />
             <span>Student</span>
           </div>
 
-          {/* LOGOUT */}
           <Button
             variant="outline"
             size="sm"

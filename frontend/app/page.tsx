@@ -27,7 +27,13 @@ export default function LoginPage() {
     setLoading(true)
 
     try {
-      const response = await fetch(`http://localhost:8080/api/users/login?rollNo=${rollNo}&password=${password}`)
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_API_URL +
+          "/api/users/login?rollNo=" +
+          rollNo +
+          "&password=" +
+          password
+      )
 
       if (response.ok) {
         // Store rollNo in localStorage

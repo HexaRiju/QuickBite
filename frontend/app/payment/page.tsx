@@ -19,22 +19,22 @@ export default function PaymentPage() {
       return
     }
 
-    //  Calculate total amount
     const total = cart.reduce(
       (sum: number, item: any) => sum + item.price * item.quantity,
       0
     )
 
     try {
-      //  Step 1: Save orders as PENDING
       const orderIds: number[] = []
 
       for (let item of cart) {
-        const res = await fetch("http://localhost:8080/api/orders", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+        const res = await fetch(
+          process.env.NEXT_PUBLIC_API_URL + "/api/orders",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
           body: JSON.stringify({
             rollNo,
             productName: item.name,
@@ -51,25 +51,36 @@ export default function PaymentPage() {
         orderIds.push(data.id)
       }
 
-      // Step 2: Open UPI App (Mock)
       const upiLink = `upi://pay?pa=quickbite@upi&pn=QuickBite&am=${total}&cu=INR`
       window.location.href = upiLink
 
-      // Step 3: Wait & mark as PAID
       setTimeout(async () => {
         try {
           for (let id of orderIds) {
-            await fetch(`http://localhost:8080/api/orders/pay/${id}`, {
-              method: "PUT",
-            })
+            await fetch(
+              process.env.NEXT_PUBLIC_API_URL + "/api/orders/pay/" + id,
+              {
+                method: "PUT",
+              }
+            )
           }
 
-          //  Clear cart
+          // ===== CART FIX START =====
           localStorage.removeItem("cart")
 
-          alert("Payment Successful ")
+          // update header immediately
+          window.dispatchEvent(new Event("cartUpdated"))
 
-          //  Redirect to orders page
+          // also trigger storage event fallback (extra safety)
+          window.dispatchEvent(
+            new StorageEvent("storage", {
+              key: "cart",
+            })
+          )
+          // ===== CART FIX END =====
+
+          alert("Payment Successful")
+
           router.replace("/orders")
         } catch (err) {
           console.error("Payment update error:", err)

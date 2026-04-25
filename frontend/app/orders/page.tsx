@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Header } from "@/components/header"
 import { useRouter } from "next/navigation"
 
 export default function OrdersPage() {
@@ -20,7 +19,7 @@ export default function OrdersPage() {
     const fetchOrders = async () => {
       try {
         const res = await fetch(
-          `http://localhost:8080/api/orders?rollNo=${rollNo}`
+          process.env.NEXT_PUBLIC_API_URL + "/api/orders?rollNo=" + rollNo
         )
         const data = await res.json()
         setOrders([...data].reverse())
@@ -36,8 +35,6 @@ export default function OrdersPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
-
       <div className="p-6 max-w-3xl mx-auto">
 
         {/* BACK BUTTON */}
